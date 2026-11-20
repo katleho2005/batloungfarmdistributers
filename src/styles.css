@@ -1,0 +1,226 @@
+:root{--bg:#EEF1EC;--ink:#14231B;--mut:#5d6b62;--grape:#5B2A4E;--grape2:#2B1A2A;--mango:#E8962E;--leaf:#2E7D4F;--bad:#B3382C;--warn:#B56A0C;--card:#fff;--line:#dfe4dc}
+@media (prefers-color-scheme:dark){:root{--bg:#141a16;--ink:#eef1ec;--mut:#9aa89f;--card:#1d2621;--line:#2c382f;--grape:#c58ab5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'Bricolage Grotesque',system-ui,sans-serif}
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.side{background:var(--grape2);padding:24px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.brand{color:#fff;margin:0 10px 22px}.brand b{display:block;font-size:26px;font-weight:800}.brand span{color:var(--mango);font-size:13px}
+.side button{background:none;border:0;color:#d9c8d5;text-align:left;padding:10px 12px;border-radius:8px;font:inherit;cursor:pointer}
+.side button:hover{background:#ffffff14}.side .on{background:var(--mango);color:#2B1A2A;font-weight:600}
+main{padding:32px 40px;max-width:1150px;width:100%}
+h1{font-size:30px;font-weight:800;margin:0 0 4px}h2{font-size:15px;font-weight:600;margin:0 0 12px}
+.muted{color:var(--mut);margin:0 0 16px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.btn{background:var(--grape);color:#fff;border:0;padding:10px 18px;border-radius:8px;font:600 14px inherit;cursor:pointer}
+.btn:hover{filter:brightness(1.15)}
+.link{background:none;border:0;color:var(--grape);font:inherit;font-weight:600;cursor:pointer;padding:6px 0}
+.stats{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:14px;margin:8px 0 18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.stat span{color:var(--mut);font-size:13px}.stat b{display:block;font-size:26px;font-weight:800;margin-top:2px}
+.stat.lead{background:var(--grape);color:#fff;border:0}.stat.lead span{color:#e6d3e0}.stat.lead b{font-size:34px}
+.warn{color:var(--warn)}.bad{color:var(--bad)}.ok{color:var(--leaf);font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px;overflow-x:auto}
+.grid2 .card{margin:0}
+.list{list-style:none;padding:0;margin:0}.list li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line)}
+.gauges{display:grid;gap:10px}.grow{display:grid;grid-template-columns:78px repeat(3,1fr);gap:8px;align-items:center;font-size:13px}
+.gauge{position:relative;background:var(--line);border-radius:6px;height:24px;overflow:hidden}
+.gauge i{position:absolute;inset:0 auto 0 0;background:var(--leaf);opacity:.85}.gauge i.low{background:var(--bad)}
+.gauge em{position:absolute;left:8px;top:2px;font-style:normal;font-weight:600;font-size:12px;color:var(--ink)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}th{font-size:13px;color:var(--mut);font-weight:600}
+.form{display:grid;gap:12px}label{display:grid;gap:4px;font-size:13px;font-weight:600}
+input,select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);min-width:0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1 1 120px}
+.search{width:100%;max-width:340px;margin-bottom:14px}.total{font-size:22px;font-weight:800;margin:4px 0}
+.alert{background:#f8dfdb;color:#7a1f16;padding:10px 14px;border-radius:8px}
+:focus-visible{outline:3px solid var(--mango);outline-offset:2px}
+@media(max-width:820px){.shell{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap}.brand{width:100%}
+main{padding:20px}.stats,.grid2{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+
+/* 1. Page Title */
+h1{
+  color: var(--grape2, #2B1A2E);
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+h1 + p, .muted{
+  color: #6b6a7a;
+}
+
+/* 2. Cards - white with colored top border */
+.card{
+  background: #ffffff;
+  border: 1px solid #eceaf3;
+  border-left: 4px solid var(--grape, #2d5b2a);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+
+/* Every 2nd card gets mango border - makes pages feel alive */
+.card:nth-of-type(2){
+  border-left-color: #ff7a1a;
+}
+.card:nth-of-type(3){
+  border-left-color: #1a9a4a;
+}
+
+/* 3. Tables - Professional Colored Header */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+table thead th, table th{
+  background: #2B1A2E !important;
+  color: white !important;
+  padding: 13px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: none;
+}
+table tbody td{
+  padding: 13px 14px;
+  border-bottom: 1px solid #f0eef5;
+  font-size: 14.5px;
+  color: #2b2b2b;
+  background: white;
+}
+/* Zebra - light purple every other row */
+table tbody tr:nth-child(even) td{
+  background: #faf7ff;
+}
+table tbody tr:hover td{
+  background: #f0eaff;
+}
+
+/* 4. Money / Numbers - make them stand out */
+table td:nth-last-child(1),
+table td:nth-last-child(2){
+  font-weight: 700;
+  color: #2d5b2a;
+}
+
+/* 5. Forms - Sales / Purchases / Vendors / Suppliers inputs */
+label{
+  color: #2B1A2E;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+input, select, textarea{
+  background: #fbfbff !important;
+  border: 1.5px solid #e6e2f0 !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+}
+input:focus, select:focus, textarea:focus{
+  border-color: #6d28d9 !important;
+  background: white !important;
+  box-shadow: 0 0 0 3px rgba(109,40,217,0.12) !important;
+}
+
+/* 6. Buttons - Beautiful */
+button, .btn{
+  background: linear-gradient(135deg, #6d28d9, #4c1d95) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 12px 18px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(109,40,217,0.3) !important;
+}
+button:hover, .btn:hover{
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+/* Delete / Cancel button - soft red */
+button[type="button"]{
+  background: #fff1f1 !important;
+  color: #d32f2f !important;
+  box-shadow: none !important;
+}
+
+/* 7. Status Badges - Paid / Owed / Pending */
+td:has(span){
+  font-weight: 600;
+}
+
+/* 8. Add New Vendor / Supplier box - highlight it */
+form{
+  background: linear-gradient(to bottom, #ffffff, #fdfaff);
+  border: 1px solid #e9e4f5;
+  border-radius: 16px;
+  padding: 22px;
+}
+
+/* 9. Total / Summary */
+h2, h3{
+  color: #2B1A2E;
+}
+/* ===== FOOTER - Batloung ===== */
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  margin-top: 32px;
+  background: #5B2A4E;
+  color: #fff;
+  border-top: 4px solid #E8962E;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-left strong {
+  font-size: 15px;
+  letter-spacing: 0.3px;
+}
+
+.footer-left span {
+  color: #e8d5e0;
+  opacity: 0.9;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+  color: #e8d5e0;
+}
+
+/* Make footer stick to bottom */
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell main {
+  flex: 1;
+}
+
+/* Mobile - stack footer */
+@media (max-width: 640px) {
+  .app-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    text-align: left;
+  }
+  .footer-right {
+    text-align: left;
+  }
+}
